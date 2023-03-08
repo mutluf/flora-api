@@ -20,8 +20,8 @@ namespace FloraAPI.Application.Features.UsersFeatures.Commands.LoginUser
     public class LoginUserHandler : IRequestHandler<LoginUserRequest, LoginUserResponse>
     {
         readonly IMapper _mapper;
-        readonly UserManager<User> _userManager;// repository
-        readonly SignInManager<User> _signInManager;//giriş için.
+        readonly UserManager<User> _userManager;
+        readonly SignInManager<User> _signInManager;
         readonly ITokenHandler _tokenHandler;
 
         public LoginUserHandler(IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, ITokenHandler tokenHandler)
