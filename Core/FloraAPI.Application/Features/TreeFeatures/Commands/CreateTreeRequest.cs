@@ -8,15 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FloraAPI.Application.Features.Commands.CreateTree
+namespace FloraAPI.Application.Features.TreeFeatures.Commands
 {
-    public class CreateTreeRequest: IRequest<CreateTreeResponse>
+    public class CreateTreeRequest : IRequest<CreateTreeResponse>
     {
         public int Id { get; set; }
         public string Color { get; set; }
         public int Year { get; set; }
         public string Type { get; set; }
-        public int FarmerId { get; set; } 
+        public int FarmerId { get; set; }
     }
 
     public class CreateTreeHandler : IRequestHandler<CreateTreeRequest, CreateTreeResponse>
@@ -39,7 +39,7 @@ namespace FloraAPI.Application.Features.Commands.CreateTree
             return new()
             {
                 Message = "başarılı"
-        };
+            };
         }
     }
 

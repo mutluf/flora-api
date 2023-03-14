@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FloraAPI.Application.Features.FarmerFeatures.Queries.GetFarmerById
+namespace FloraAPI.Application.Features.FarmerFeatures.Queries
 {
-    public class GetFarmerByIdRequest:IRequest<GetFarmerByIdResponse>
+    public class GetFarmerByIdRequest : IRequest<GetFarmerByIdResponse>
     {
         public string Id { get; set; }
     }
@@ -25,7 +25,7 @@ namespace FloraAPI.Application.Features.FarmerFeatures.Queries.GetFarmerById
 
         public async Task<GetFarmerByIdResponse> Handle(GetFarmerByIdRequest request, CancellationToken cancellationToken)
         {
-            Farmer farmer= await _farmerReadRepository.GetByIdAysnc(request.Id);
+            Farmer farmer = await _farmerReadRepository.GetByIdAysnc(request.Id);
             return new()
             {
                 Farmer = farmer,

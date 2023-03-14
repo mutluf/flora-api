@@ -1,4 +1,4 @@
-﻿using FloraAPI.Application.Features.UsersFeatures.Commands.CreateUser;
+﻿using FloraAPI.Application.Features.UsersFeatures.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

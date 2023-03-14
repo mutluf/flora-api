@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FloraAPI.Application.Features.Commands.UpdateTree
+namespace FloraAPI.Application.Features.TreeFeatures.Commands
 {
-    public class UpdateTreeRequest:IRequest<UpdateTreeResponse>
+    public class UpdateTreeRequest : IRequest<UpdateTreeResponse>
     {
         public int Id { get; set; }
         public string? Color { get; set; }

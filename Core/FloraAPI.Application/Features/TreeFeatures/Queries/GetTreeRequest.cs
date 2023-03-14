@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FloraAPI.Application.Features.TreeFeatures.Queries.GetTree
+namespace FloraAPI.Application.Features.TreeFeatures.Queries
 {
     public class GetTreeRequest : IRequest<GetTreeResponse>
     {

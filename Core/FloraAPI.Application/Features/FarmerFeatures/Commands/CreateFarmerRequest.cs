@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FloraAPI.Application.Features.FarmerFeatures.Commands.CreateFarmer
+namespace FloraAPI.Application.Features.FarmerFeatures.Commands
 {
-    public class CreateFarmerRequest:IRequest<CreateFarmerResponse>
+    public class CreateFarmerRequest : IRequest<CreateFarmerResponse>
     {
         public int Id { get; set; }
         public string Name { get; set; }

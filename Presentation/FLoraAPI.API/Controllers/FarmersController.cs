@@ -1,9 +1,6 @@
-﻿using FloraAPI.Application.Features.Commands.CreateTree;
-using FloraAPI.Application.Features.FarmerFeatures.Commands.CreateFarmer;
-using FloraAPI.Application.Features.FarmerFeatures.Queries.GetFarmer;
-using FloraAPI.Application.Features.FarmerFeatures.Queries.GetFarmerById;
+﻿using FloraAPI.Application.Features.FarmerFeatures.Commands;
+using FloraAPI.Application.Features.FarmerFeatures.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLoraAPI.API.Controllers

@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FloraAPI.Application.Features.TreeFeatures.Queries.GetTreeById
+namespace FloraAPI.Application.Features.TreeFeatures.Queries
 {
-    public class GetTreeByIdRequest:IRequest<GetTreeByIdResponse>
+    public class GetTreeByIdRequest : IRequest<GetTreeByIdResponse>
     {
         public string Id { get; set; }
     }
@@ -22,7 +22,7 @@ namespace FloraAPI.Application.Features.TreeFeatures.Queries.GetTreeById
 
         public GetTreeByIdHandler(ITreeReadRepository treeWriteReadRepository)
         {
-            _treeReadRepository = treeWriteReadRepository;          
+            _treeReadRepository = treeWriteReadRepository;
         }
 
         public async Task<GetTreeByIdResponse> Handle(GetTreeByIdRequest request, CancellationToken cancellationToken)

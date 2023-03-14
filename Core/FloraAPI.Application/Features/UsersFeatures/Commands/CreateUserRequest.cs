@@ -12,7 +12,7 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FloraAPI.Application.Features.UsersFeatures.Commands.CreateUser
+namespace FloraAPI.Application.Features.UsersFeatures.Commands
 {
     public class CreateUserRequest : IRequest<CreateUserResponse>
     {
@@ -36,9 +36,9 @@ namespace FloraAPI.Application.Features.UsersFeatures.Commands.CreateUser
 
         public async Task<CreateUserResponse> Handle(CreateUserRequest request, CancellationToken cancellationToken)
         {
-            
+
             User user = _mapper.Map<User>(request);
-            IdentityResult result = await _userManager.CreateAsync(user,request.Password);
+            IdentityResult result = await _userManager.CreateAsync(user, request.Password);
             List<string> errors = new List<string>();
 
             foreach (var error in result.Errors)

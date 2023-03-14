@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FloraAPI.Application.Features.FarmerFeatures.Queries.GetFarmer
+namespace FloraAPI.Application.Features.FarmerFeatures.Queries
 {
-    public class GetFarmerRequest:IRequest<GetFarmerResponse>
+    public class GetFarmerRequest : IRequest<GetFarmerResponse>
     {
     }
 
@@ -26,7 +26,7 @@ namespace FloraAPI.Application.Features.FarmerFeatures.Queries.GetFarmer
         {
             IQueryable<Farmer> farmers = _farmerReadRepository.GetAll();
 
-            return  new()
+            return new()
             {
                 Farmers = farmers
             };

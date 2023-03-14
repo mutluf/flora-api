@@ -1,7 +1,5 @@
-﻿using FloraAPI.Application.Features.Commands.CreateTree;
-using FloraAPI.Application.Features.Commands.UpdateTree;
-using FloraAPI.Application.Features.TreeFeatures.Queries.GetTree;
-using FloraAPI.Application.Features.TreeFeatures.Queries.GetTreeById;
+﻿using FloraAPI.Application.Features.TreeFeatures.Commands;
+using FloraAPI.Application.Features.TreeFeatures.Queries;
 using FloraAPI.Application.Repositories.TreeRepository;
 using FloraAPI.Domain.Entities;
 using MediatR;

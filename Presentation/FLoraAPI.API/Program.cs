@@ -1,11 +1,5 @@
-using FloraAPI.Application.Features.Commands.CreateTree;
 using FLoraAPI.Persistence;
-using FLoraAPI.Persistence.Context;
 using MediatR;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
