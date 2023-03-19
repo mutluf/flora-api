@@ -21,5 +21,11 @@ namespace FLoraAPI.API.Controllers
             CreateUserResponse response =await _mediator.Send(request);
             return Ok(response);
         }
+
+        public async Task<IActionResult> LoginUser(LoginUserRequest request)
+        {
+            LoginUserResponse response = await _mediator.Send(request);
+            return Ok(response);
+        }
     }
 }
