@@ -13,10 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace FLoraAPI.Persistence
 {
     public static class ServiceRegistiration
-    {//bu metot içinde yazılabilir ama fark ettiysen buradaki addDbContext'i bir de program.cs içine static diye çağrılmıyor şu şey de.
-        //static olmalı bu neden extension metot var içinde, aslında karışık da hazır bir metoda ekleme yapmak gibi anlamadım tamam anladım zaten movie de sen öyle yapmıştın?
-       
-        
+    {     
         public static void AddPersistenceServices(this IServiceCollection services)
         {
             
@@ -28,7 +25,6 @@ namespace FLoraAPI.Persistence
             services.AddScoped<IFruitWriteRepository, FruitWriteRepository>();
             services.AddScoped<IFarmerReadRepository, FarmerReadRepository>();
             services.AddScoped<IFarmerWriteRepository,FarmerWriteRepository>();
-            //artık eklenecek servisleri buradan ekleyebilirsin dbcontext de buradan çalışacak.kullanıcı daha da sinirlensin diye şifre de ne istediğimizi belirtmeyeelim bir kez hata yapmadıkça+577
             services.AddIdentity<User, Role>(options =>
             {
                 options.Password.RequireNonAlphanumeric = true;
@@ -45,17 +41,15 @@ namespace FLoraAPI.Persistence
     public static class Configuration
     {
 
-        //Bu metotda Connection string property yapısı oluşturduk. Bu yapıyı ServiceRegistiration içine vereceğiz.
-        //.Get isteğine string gidecek ve ServiceRegistiration ile program.cs içine servis olarak eklenecektir.
         static public string ConnectionString
         {
 
             get
-            {// ConnectionStringi alıyor artık.
+            {
 
                 ConfigurationManager cfg = new ConfigurationManager();
                 cfg.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/FLoraAPI.API"));
-                cfg.AddJsonFile("appsettings.json");//microsoft.extensions.configuration.json adındaki paket üst 2 satır için gerekli.
+                cfg.AddJsonFile("appsettings.json");
 
                 return cfg.GetConnectionString("MicrosoftSQL");
             }
