@@ -1,16 +1,8 @@
 using FloraAPI.Application.Abstractions;
-using FloraAPI.Application.DTOs;
-using FloraAPI.Application.Features.Commands.CreateTree;
-using FloraAPI.Infrastructure.Services;
 using FLoraAPI.Persistence;
-using FLoraAPI.Persistence.Context;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,6 +33,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     };
 }
 );
+
+
+//bütün sitelerden istek alabilir builder.Services.AddCors(options=>options.AddDefaultPolicy(policy=>policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
+    policy.WithOrigins("http://localhost:7170", "https://localhost:7170").AllowAnyHeader().AllowAnyMethod().AllowCredentials()//belirli bir urlden gelen istekleri al.
+));
+
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

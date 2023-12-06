@@ -12,5 +12,6 @@ namespace FloraAPI.Application.Repositories
         Task<bool> AddAysnc(T Model);
         bool Update(T Model);
         Task<int> SaveAysnc();
+        void Delete(T Model);
     }
 }

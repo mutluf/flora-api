@@ -4,11 +4,6 @@ using FloraAPI.Application.DTOs;
 using FloraAPI.Domain.Entities.User;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FloraAPI.Application.Features.UsersFeatures.Commands.LoginUser
 {
@@ -31,7 +26,7 @@ namespace FloraAPI.Application.Features.UsersFeatures.Commands.LoginUser
             _signInManager = signInManager;
             _tokenHandler = tokenHandler;
         }
-
+       
         public async Task<LoginUserResponse> Handle(LoginUserRequest request, CancellationToken cancellationToken)
         {
             //User user = _mapper.Map<User>(request);

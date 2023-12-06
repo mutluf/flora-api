@@ -1,16 +1,7 @@
 ﻿using AutoMapper;
-using FloraAPI.Domain.Entities.Common;
 using FloraAPI.Domain.Entities.User;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FloraAPI.Application.Features.UsersFeatures.Commands.CreateUser
 {
@@ -41,15 +32,13 @@ namespace FloraAPI.Application.Features.UsersFeatures.Commands.CreateUser
 
             User user = _mapper.Map<User>(request);
             IdentityResult result = await _userManager.CreateAsync(user,request.Password);
+
             List<string> errors = new List<string>();
 
             foreach (var error in result.Errors)
             {
                 errors.Add(error.Description);
             }
-
-
-
 
             if (result.Succeeded)
             {
@@ -64,13 +53,13 @@ namespace FloraAPI.Application.Features.UsersFeatures.Commands.CreateUser
                 
                 return new()
                 {
-                    
-                    Errors = errors
+
+                   Errors= errors   
 
                 };
             }
 
-            throw new NotImplementedException();
+            
         }
     }
     public class CreateUserResponse

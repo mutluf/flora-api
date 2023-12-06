@@ -1,5 +1,6 @@
 ﻿using FloraAPI.Application.Features.Commands.CreateTree;
 using FloraAPI.Application.Features.Commands.UpdateTree;
+using FloraAPI.Application.Features.TreeFeatures.Commands;
 using FloraAPI.Application.Features.TreeFeatures.Queries.GetTree;
 using FloraAPI.Application.Features.TreeFeatures.Queries.GetTreeById;
 using FloraAPI.Application.Repositories.TreeRepository;
@@ -50,6 +51,13 @@ namespace FLoraAPI.API.Controllers
         {
             GetTreeByIdResponse response = await _mediator.Send(request);
             return Ok(response);   
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteTree([FromRoute] DeleteTreeRequest request)
+        {
+            DeleteTreeResponse response= await _mediator.Send(request);
+            return Ok(response);
         }
 
     }

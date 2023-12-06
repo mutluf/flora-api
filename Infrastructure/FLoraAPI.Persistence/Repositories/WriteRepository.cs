@@ -31,6 +31,11 @@ namespace FLoraAPI.Persistence.Repositories
             return entityEntry.State == EntityState.Added;
         }
 
+        public void Delete(T Model)
+        {
+            Table.Remove(Model);           
+        }
+
         public async Task<int> SaveAysnc()
         {
            return await _context.SaveChangesAsync();
