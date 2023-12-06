@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FloraAPI.Application.Abstractions.Cache;
 using FloraAPI.Application.Repositories.TreeRepository;
 using FloraAPI.Domain.Entities;
 using MediatR;
@@ -18,15 +19,22 @@ namespace FloraAPI.Application.Features.TreeFeatures.Queries.GetTree
     public class GetTreeHandler : IRequestHandler<GetTreeRequest, GetTreeResponse>
     {
         ITreeReadRepository _treeReadRepository;
+        ICacheService _cacheService;
 
-        public GetTreeHandler(ITreeReadRepository treeReadRepository)
+        public GetTreeHandler(ITreeReadRepository treeReadRepository, ICacheService cacheService)
         {
             _treeReadRepository = treeReadRepository;
+            _cacheService = cacheService;
         }
 
         public async Task<GetTreeResponse> Handle(GetTreeRequest request, CancellationToken cancellationToken)
         {
-            IQueryable<Tree> trees = _treeReadRepository.GetAll();
+            IQueryable<Tree> trees = await _cacheService.GetOrAddAsync("trees", async () =>
+            {
+                trees = _treeReadRepository.GetAll();
+                return trees;
+            });
+            
 
             return new()
             {
@@ -37,6 +45,6 @@ namespace FloraAPI.Application.Features.TreeFeatures.Queries.GetTree
 
     public class GetTreeResponse
     {
-        public IQueryable<Tree>? Trees { get; set; }//buralar doğru. kopya çektim canım doğru olsun <3 aslında buralar da değişir neden dersen buraya direkt entitiy vermek yerine field field yaparız ama şimdilik gerek yok.
+        public IQueryable<Tree>? Trees { get; set; }
     }
 }
