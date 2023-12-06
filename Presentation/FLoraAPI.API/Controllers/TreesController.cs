@@ -3,16 +3,13 @@ using FloraAPI.Application.Features.Commands.UpdateTree;
 using FloraAPI.Application.Features.TreeFeatures.Commands;
 using FloraAPI.Application.Features.TreeFeatures.Queries.GetTree;
 using FloraAPI.Application.Features.TreeFeatures.Queries.GetTreeById;
-using FloraAPI.Application.Repositories.TreeRepository;
-using FloraAPI.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLoraAPI.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/trees")]
     [ApiController]
     [Authorize(AuthenticationSchemes = "Admin")]
     public class TreesController : ControllerBase
@@ -46,14 +43,14 @@ namespace FLoraAPI.API.Controllers
            
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetTreeById([FromRoute] GetTreeByIdRequest request)
         {
             GetTreeByIdResponse response = await _mediator.Send(request);
             return Ok(response);   
         }
 
-        [HttpDelete("{Id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTree([FromRoute] DeleteTreeRequest request)
         {
             DeleteTreeResponse response= await _mediator.Send(request);

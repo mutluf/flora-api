@@ -1,15 +1,13 @@
-﻿using FloraAPI.Application.Features.Commands.CreateTree;
-using FloraAPI.Application.Features.FarmerFeatures.Commands;
+﻿using FloraAPI.Application.Features.FarmerFeatures.Commands;
 using FloraAPI.Application.Features.FarmerFeatures.Commands.CreateFarmer;
 using FloraAPI.Application.Features.FarmerFeatures.Queries.GetFarmer;
 using FloraAPI.Application.Features.FarmerFeatures.Queries.GetFarmerById;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLoraAPI.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/farmers")]
     [ApiController]
     public class FarmersController : ControllerBase
     {
@@ -29,7 +27,7 @@ namespace FLoraAPI.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] GetFarmerByIdRequest request)
         {
             GetFarmerByIdResponse response = await _mediator.Send(request);
@@ -43,7 +41,7 @@ namespace FLoraAPI.API.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] DeleteFarmerRequest request)
         {
             DeleteFarmerResponse response = await _mediator.Send(request);

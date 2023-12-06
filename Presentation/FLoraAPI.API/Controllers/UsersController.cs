@@ -1,24 +1,20 @@
 ﻿using FloraAPI.Application.Features.UsersFeatures.Commands.CreateUser;
 using FloraAPI.Application.Features.UsersFeatures.Commands.LoginUser;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLoraAPI.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/users")]
     [ApiController]
    
     public class UsersController : ControllerBase
     {
         readonly IMediator _mediator;
        
-        readonly IConfiguration _configuration;
-        public UsersController(IMediator mediator, IConfiguration configuration)
+        public UsersController(IMediator mediator)
         {
             _mediator = mediator;
-            _configuration = configuration;
         }
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody]CreateUserRequest request)
@@ -27,7 +23,7 @@ namespace FLoraAPI.API.Controllers
             return Ok(response);
         }
     
-        [HttpPost("[action]")]
+        [HttpPost("login")]
         public async Task<IActionResult> LoginUser(LoginUserRequest request)
         {
             LoginUserResponse response = await _mediator.Send(request);
