@@ -41,6 +41,7 @@ namespace FloraAPI.Persistence.Services
                 await _cache.StringSetAsync(key, result);
             }
 
+
             return JsonSerializer.Deserialize<T>(result);
         }
 
